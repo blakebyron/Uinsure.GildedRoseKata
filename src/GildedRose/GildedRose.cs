@@ -68,20 +68,17 @@ namespace GildedRoseKata
                 {
                     IncreaseQuality(item);
                 }
+                else if (IsBackstagepasses)
+                {
+                    MakeQualityZero(item);
+                }
                 else
                 {
-                    if (IsBackstagepasses)
+                    if (IsSulfuras)
                     {
-                        item.Quality = item.Quality - item.Quality;
+                        return;
                     }
-                    else
-                    {
-                        if (IsSulfuras)
-                        {
-                            return;
-                        }
-                        DecreaseQuality(item);
-                    }
+                    DecreaseQuality(item);
                 }
             }
         }
@@ -100,6 +97,11 @@ namespace GildedRoseKata
             {
                 item.Quality += 1;
             }
+        }
+
+        private void MakeQualityZero(Item item)
+        {
+            item.Quality = 0;
         }
     }
 }
