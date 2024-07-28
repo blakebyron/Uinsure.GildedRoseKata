@@ -12,9 +12,9 @@ namespace GildedRoseKata
 
         public void UpdateQuality()
         {
-            for (var i = 0; i < Items.Count; i++)
+            foreach (var item in Items)
             {
-                Update(Items[i]);
+                Update(item);
             }
         }
 
@@ -73,7 +73,7 @@ namespace GildedRoseKata
             }
         }
 
-        private static void DecreaseQuality(Item item)
+        private void DecreaseQuality(Item item)
         {
             if (item.Quality > 0)
             {
