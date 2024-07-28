@@ -25,34 +25,6 @@ namespace GildedRoseKata
             const string SulfurasName = "Sulfuras, Hand of Ragnaros";
 
             bool IsSulfuras = item.Name == SulfurasName;
-
-            switch (item.Name)
-            {
-                case SulfurasName:
-                    break;
-
-                case AgedBrieName:
-                    IncreaseQuality(item);
-                    break;
-                case BackstagepassesName:
-                    IncreaseQuality(item);
-
-                    if (item.SellIn < 11)
-                    {
-                        IncreaseQuality(item);
-                    }
-
-                    if (item.SellIn < 6)
-                    {
-                        IncreaseQuality(item);
-                    }
-                    break;
-
-                default:
-                    DecreaseQuality(item);
-                    break;
-            }
-
             if (IsSulfuras)
             {
             }
@@ -67,12 +39,24 @@ namespace GildedRoseKata
                     break;
 
                 case AgedBrieName:
+                    IncreaseQuality(item);
                     if (item.SellIn < 0)
                     {
                         IncreaseQuality(item);
                     }
                     break;
                 case BackstagepassesName:
+                    IncreaseQuality(item);
+
+                    if (item.SellIn < 10)
+                    {
+                        IncreaseQuality(item);
+                    }
+
+                    if (item.SellIn < 5)
+                    {
+                        IncreaseQuality(item);
+                    }
                     if (item.SellIn < 0)
                     {
                         MakeQualityZero(item);
@@ -80,6 +64,7 @@ namespace GildedRoseKata
                     break;
 
                 default:
+                    DecreaseQuality(item);
                     if (item.SellIn < 0)
                     {
                         DecreaseQuality(item);
