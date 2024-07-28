@@ -24,8 +24,6 @@ namespace GildedRoseKata
             const string BackstagepassesName = "Backstage passes to a TAFKAL80ETC concert";
             const string SulfurasName = "Sulfuras, Hand of Ragnaros";
 
-            bool IsAgedBrie = item.Name == AgedBrieName;
-            bool IsBackstagepasses = item.Name == BackstagepassesName;
             bool IsSulfuras = item.Name == SulfurasName;
 
             switch (item.Name)
@@ -54,35 +52,6 @@ namespace GildedRoseKata
                     DecreaseQuality(item);
                     break;
             }
-            /*  if (IsAgedBrie)
-             {
-                 IncreaseQuality(item);
-             }
-             else if (IsBackstagepasses)
-             {
-                 IncreaseQuality(item);
-
-                 if (item.SellIn < 11)
-                 {
-                     IncreaseQuality(item);
-                 }
-
-                 if (item.SellIn < 6)
-                 {
-                     IncreaseQuality(item);
-                 }
-
-             }
-             else
-             {
-                 if (IsSulfuras)
-                 {
-                 }
-                 else
-                 {
-                     DecreaseQuality(item);
-                 }
-             } */
 
             if (IsSulfuras)
             {
@@ -92,24 +61,30 @@ namespace GildedRoseKata
                 DecreaseSellin(item);
             }
 
-            if (item.SellIn < 0)
+            switch (item.Name)
             {
-                if (IsAgedBrie)
-                {
-                    IncreaseQuality(item);
-                }
-                else if (IsBackstagepasses)
-                {
-                    MakeQualityZero(item);
-                }
-                else
-                {
-                    if (IsSulfuras)
+                case SulfurasName:
+                    break;
+
+                case AgedBrieName:
+                    if (item.SellIn < 0)
                     {
-                        return;
+                        IncreaseQuality(item);
                     }
-                    DecreaseQuality(item);
-                }
+                    break;
+                case BackstagepassesName:
+                    if (item.SellIn < 0)
+                    {
+                        MakeQualityZero(item);
+                    }
+                    break;
+
+                default:
+                    if (item.SellIn < 0)
+                    {
+                        DecreaseQuality(item);
+                    }
+                    break;
             }
         }
 
