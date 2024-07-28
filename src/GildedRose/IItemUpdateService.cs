@@ -2,7 +2,7 @@
 
 namespace GildedRoseKata;
 
-public interface IQualityUpdateService
+public interface IItemUpdateService
 {
     void UpdateQuality(Item item);
 }

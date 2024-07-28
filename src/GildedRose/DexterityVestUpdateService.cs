@@ -2,7 +2,7 @@
 
 namespace GildedRoseKata;
 
-public class DexterityVestUpdateService : IQualityUpdateService
+public class DexterityVestUpdateService : IItemUpdateService
 {
     public void UpdateQuality(Item item)
     {

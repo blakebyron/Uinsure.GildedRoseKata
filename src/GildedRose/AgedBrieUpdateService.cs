@@ -2,7 +2,7 @@
 
 namespace GildedRoseKata;
 
-public class AgedBrieUpdateService : IQualityUpdateService
+public class AgedBrieUpdateService : IItemUpdateService
 {
     public void UpdateQuality(Item item)
     {

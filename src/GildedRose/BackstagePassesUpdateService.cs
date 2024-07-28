@@ -2,7 +2,7 @@
 
 namespace GildedRoseKata;
 
-public class BackstagePassesUpdateService : IQualityUpdateService
+public class BackstagePassesUpdateService : IItemUpdateService
 {
     public void UpdateQuality(Item item)
     {

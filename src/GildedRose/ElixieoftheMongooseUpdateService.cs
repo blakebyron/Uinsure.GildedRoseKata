@@ -2,7 +2,7 @@
 
 namespace GildedRoseKata;
 
-public class ElixieoftheMongooseUpdateService : IQualityUpdateService
+public class ElixieoftheMongooseUpdateService : IItemUpdateService
 {
     public void UpdateQuality(Item item)
     {

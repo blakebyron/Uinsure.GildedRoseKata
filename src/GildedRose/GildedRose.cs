@@ -7,11 +7,11 @@ namespace GildedRoseKata
         const string SulfurasName = "Sulfuras, Hand of Ragnaros";
 
         IList<Item> Items;
-        private UpdateQualityService svcUpdateQuality;
+        private ItemUpdateService svcUpdateQuality;
 
         public GildedRose(IList<Item> Items)
         {
-            svcUpdateQuality = new UpdateQualityService();
+            svcUpdateQuality = new ItemUpdateService();
             this.Items = Items;
         }
 
@@ -44,7 +44,7 @@ namespace GildedRoseKata
 
         private void UpdateItemQuality(Item item)
         {
-            var updateService = svcUpdateQuality.GetQualityUpdateService(item.Name);
+            var updateService = svcUpdateQuality.GetItemUpdateService(item.Name);
             if (updateService != null)
             {
                 updateService.UpdateQuality(item);
