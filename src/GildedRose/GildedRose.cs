@@ -4,13 +4,15 @@ namespace GildedRoseKata
 {
     public class GildedRose
     {
-        const string AgedBrieName = "Aged Brie";
         const string BackstagepassesName = "Backstage passes to a TAFKAL80ETC concert";
         const string SulfurasName = "Sulfuras, Hand of Ragnaros";
 
         IList<Item> Items;
+        private UpdateQualityService svcUpdateQuality;
+
         public GildedRose(IList<Item> Items)
         {
+            svcUpdateQuality = new UpdateQualityService();
             this.Items = Items;
         }
 
@@ -43,17 +45,15 @@ namespace GildedRoseKata
 
         private void UpdateItemQuality(Item item)
         {
+            var updateService = svcUpdateQuality.GetQualityUpdateService(item.Name);
+            if (updateService != null)
+            {
+                updateService.UpdateQuality(item);
+                return;
+            }
             switch (item.Name)
             {
                 case SulfurasName:
-                    break;
-
-                case AgedBrieName:
-                    IncreaseQuality(item);
-                    if (item.SellIn < 0)
-                    {
-                        IncreaseQuality(item);
-                    }
                     break;
                 case BackstagepassesName:
                     IncreaseQuality(item);
