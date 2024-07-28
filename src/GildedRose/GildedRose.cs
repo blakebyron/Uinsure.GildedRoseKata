@@ -55,24 +55,6 @@ namespace GildedRoseKata
             {
                 case SulfurasName:
                     break;
-                case BackstagepassesName:
-                    IncreaseQuality(item);
-
-                    if (item.SellIn < 10)
-                    {
-                        IncreaseQuality(item);
-                    }
-
-                    if (item.SellIn < 5)
-                    {
-                        IncreaseQuality(item);
-                    }
-                    if (item.SellIn < 0)
-                    {
-                        MakeQualityZero(item);
-                    }
-                    break;
-
                 default:
                     DecreaseQuality(item);
                     if (item.SellIn < 0)
@@ -89,19 +71,6 @@ namespace GildedRoseKata
             {
                 item.Quality -= 1;
             }
-        }
-
-        private void IncreaseQuality(Item item)
-        {
-            if (item.Quality < 50)
-            {
-                item.Quality += 1;
-            }
-        }
-
-        private void MakeQualityZero(Item item)
-        {
-            item.Quality = 0;
         }
 
         private void DecreaseSellin(Item item)
