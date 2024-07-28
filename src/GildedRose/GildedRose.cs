@@ -20,39 +20,69 @@ namespace GildedRoseKata
 
         private void Update(Item item)
         {
-            bool IsAgedBrie = item.Name == "Aged Brie";
-            bool IsBackstagepasses = item.Name == "Backstage passes to a TAFKAL80ETC concert";
-            bool IsSulfuras = item.Name == "Sulfuras, Hand of Ragnaros";
+            const string AgedBrieName = "Aged Brie";
+            const string BackstagepassesName = "Backstage passes to a TAFKAL80ETC concert";
+            const string SulfurasName = "Sulfuras, Hand of Ragnaros";
 
-            if (IsAgedBrie)
-            {
-                IncreaseQuality(item);
-            }
-            else if (IsBackstagepasses)
-            {
-                IncreaseQuality(item);
+            bool IsAgedBrie = item.Name == AgedBrieName;
+            bool IsBackstagepasses = item.Name == BackstagepassesName;
+            bool IsSulfuras = item.Name == SulfurasName;
 
-                if (item.SellIn < 11)
-                {
+            switch (item.Name)
+            {
+                case SulfurasName:
+                    break;
+
+                case AgedBrieName:
                     IncreaseQuality(item);
-                }
-
-                if (item.SellIn < 6)
-                {
+                    break;
+                case BackstagepassesName:
                     IncreaseQuality(item);
-                }
 
-            }
-            else
-            {
-                if (IsSulfuras)
-                {
-                }
-                else
-                {
+                    if (item.SellIn < 11)
+                    {
+                        IncreaseQuality(item);
+                    }
+
+                    if (item.SellIn < 6)
+                    {
+                        IncreaseQuality(item);
+                    }
+                    break;
+
+                default:
                     DecreaseQuality(item);
-                }
+                    break;
             }
+            /*  if (IsAgedBrie)
+             {
+                 IncreaseQuality(item);
+             }
+             else if (IsBackstagepasses)
+             {
+                 IncreaseQuality(item);
+
+                 if (item.SellIn < 11)
+                 {
+                     IncreaseQuality(item);
+                 }
+
+                 if (item.SellIn < 6)
+                 {
+                     IncreaseQuality(item);
+                 }
+
+             }
+             else
+             {
+                 if (IsSulfuras)
+                 {
+                 }
+                 else
+                 {
+                     DecreaseQuality(item);
+                 }
+             } */
 
             if (IsSulfuras)
             {
