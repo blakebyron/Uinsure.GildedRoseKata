@@ -20,4 +20,14 @@ public class DexterityVestUpdateService : IItemUpdateService
             item.Quality -= 1;
         }
     }
+
+    public void UpdateSellin(Item item)
+    {
+        DecreaseSellin(item);
+    }
+
+    private void DecreaseSellin(Item item)
+    {
+        item.SellIn -= 1;
+    }
 }

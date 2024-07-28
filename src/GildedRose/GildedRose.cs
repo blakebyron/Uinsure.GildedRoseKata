@@ -4,8 +4,6 @@ namespace GildedRoseKata
 {
     public class GildedRose
     {
-        const string SulfurasName = "Sulfuras, Hand of Ragnaros";
-
         IList<Item> Items;
         private ItemUpdateService svcUpdateQuality;
 
@@ -25,36 +23,13 @@ namespace GildedRoseKata
 
         private void UpdateItem(Item item)
         {
-            UpdateItemSellin(item);
-            UpdateItemQuality(item);
-        }
-
-        private void UpdateItemSellin(Item item)
-        {
-            bool IsSulfuras = item.Name == SulfurasName;
-            if (IsSulfuras)
-            {
-                return;
-            }
-            else
-            {
-                DecreaseSellin(item);
-            }
-        }
-
-        private void UpdateItemQuality(Item item)
-        {
             var updateService = svcUpdateQuality.GetItemUpdateService(item.Name);
             if (updateService != null)
             {
+                updateService.UpdateSellin(item);
                 updateService.UpdateQuality(item);
                 return;
             }
-        }
-
-        private void DecreaseSellin(Item item)
-        {
-            item.SellIn -= 1;
         }
     }
 }

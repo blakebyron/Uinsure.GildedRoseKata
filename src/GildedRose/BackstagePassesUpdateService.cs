@@ -35,4 +35,14 @@ public class BackstagePassesUpdateService : IItemUpdateService
     {
         item.Quality = 0;
     }
+
+    public void UpdateSellin(Item item)
+    {
+        DecreaseSellin(item);
+    }
+
+    private void DecreaseSellin(Item item)
+    {
+        item.SellIn -= 1;
+    }
 }
