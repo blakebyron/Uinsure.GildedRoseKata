@@ -4,7 +4,6 @@ namespace GildedRoseKata
 {
     public class GildedRose
     {
-        const string BackstagepassesName = "Backstage passes to a TAFKAL80ETC concert";
         const string SulfurasName = "Sulfuras, Hand of Ragnaros";
 
         IList<Item> Items;
@@ -50,26 +49,6 @@ namespace GildedRoseKata
             {
                 updateService.UpdateQuality(item);
                 return;
-            }
-            switch (item.Name)
-            {
-                case SulfurasName:
-                    break;
-                default:
-                    DecreaseQuality(item);
-                    if (item.SellIn < 0)
-                    {
-                        DecreaseQuality(item);
-                    }
-                    break;
-            }
-        }
-
-        private void DecreaseQuality(Item item)
-        {
-            if (item.Quality > 0)
-            {
-                item.Quality -= 1;
             }
         }
 
