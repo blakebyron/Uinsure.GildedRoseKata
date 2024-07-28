@@ -26,33 +26,22 @@ namespace GildedRoseKata
 
             if (IsAgedBrie)
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality = item.Quality + 1;
-                }
+                IncreaseQuality(item);
             }
             else if (IsBackstagepasses)
             {
-                if (item.Quality < 50)
+                IncreaseQuality(item);
+
+                if (item.SellIn < 11)
                 {
-                    item.Quality = item.Quality + 1;
-
-                    if (item.SellIn < 11)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
-                    }
-
-                    if (item.SellIn < 6)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
-                    }
+                    IncreaseQuality(item);
                 }
+
+                if (item.SellIn < 6)
+                {
+                    IncreaseQuality(item);
+                }
+
             }
             else
             {
@@ -80,10 +69,7 @@ namespace GildedRoseKata
             {
                 if (IsAgedBrie)
                 {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
+                    IncreaseQuality(item);
                 }
                 else
                 {
@@ -103,6 +89,14 @@ namespace GildedRoseKata
                         }
                     }
                 }
+            }
+        }
+
+        private void IncreaseQuality(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                item.Quality += 1;
             }
         }
     }
