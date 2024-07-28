@@ -45,15 +45,12 @@ namespace GildedRoseKata
             }
             else
             {
-                if (item.Quality > 0)
+                if (IsSulfuras)
                 {
-                    if (IsSulfuras)
-                    {
-                    }
-                    else
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
+                }
+                else
+                {
+                    DecreaseQuality(item);
                 }
             }
 
@@ -79,16 +76,21 @@ namespace GildedRoseKata
                     }
                     else
                     {
-                        if (item.Quality > 0)
+                        if (IsSulfuras)
                         {
-                            if (IsSulfuras)
-                            {
-                                return;
-                            }
-                            item.Quality = item.Quality - 1;
+                            return;
                         }
+                        DecreaseQuality(item);
                     }
                 }
+            }
+        }
+
+        private static void DecreaseQuality(Item item)
+        {
+            if (item.Quality > 0)
+            {
+                item.Quality -= 1;
             }
         }
 
