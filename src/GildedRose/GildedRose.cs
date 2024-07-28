@@ -4,6 +4,10 @@ namespace GildedRoseKata
 {
     public class GildedRose
     {
+        const string AgedBrieName = "Aged Brie";
+        const string BackstagepassesName = "Backstage passes to a TAFKAL80ETC concert";
+        const string SulfurasName = "Sulfuras, Hand of Ragnaros";
+
         IList<Item> Items;
         public GildedRose(IList<Item> Items)
         {
@@ -14,25 +18,31 @@ namespace GildedRoseKata
         {
             foreach (var item in Items)
             {
-                Update(item);
+                UpdateItem(item);
             }
         }
 
-        private void Update(Item item)
+        private void UpdateItem(Item item)
         {
-            const string AgedBrieName = "Aged Brie";
-            const string BackstagepassesName = "Backstage passes to a TAFKAL80ETC concert";
-            const string SulfurasName = "Sulfuras, Hand of Ragnaros";
+            UpdateItemSellin(item);
+            UpdateItemQuality(item);
+        }
 
+        private void UpdateItemSellin(Item item)
+        {
             bool IsSulfuras = item.Name == SulfurasName;
             if (IsSulfuras)
             {
+                return;
             }
             else
             {
                 DecreaseSellin(item);
             }
+        }
 
+        private void UpdateItemQuality(Item item)
+        {
             switch (item.Name)
             {
                 case SulfurasName:
