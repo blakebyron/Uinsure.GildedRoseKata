@@ -59,7 +59,7 @@ namespace GildedRoseKata
             }
             else
             {
-                item.SellIn = item.SellIn - 1;
+                DecreaseSellin(item);
             }
 
             if (item.SellIn < 0)
@@ -102,6 +102,11 @@ namespace GildedRoseKata
         private void MakeQualityZero(Item item)
         {
             item.Quality = 0;
+        }
+
+        private void DecreaseSellin(Item item)
+        {
+            item.SellIn -= 1;
         }
     }
 }
