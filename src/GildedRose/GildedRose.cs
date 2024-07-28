@@ -87,10 +87,11 @@ namespace GildedRoseKata
                     {
                         if (item.Quality > 0)
                         {
-                            if (item.Name != "Sulfuras, Hand of Ragnaros")
+                            if (item.Name == "Sulfuras, Hand of Ragnaros")
                             {
-                                item.Quality = item.Quality - 1;
+                                return;
                             }
+                            item.Quality = item.Quality - 1;
                         }
                     }
                 }
