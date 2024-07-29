@@ -62,6 +62,7 @@ namespace GildedRoseTests
         [Theory]
         [InlineData(ItemNames.DexterityVest, 0)]
         [InlineData(ItemNames.ElixiroftheMongoose, 0)]
+        [InlineData(ItemNames.ConjuredManaCake, 0)]
         public void QualityCanNeverBeLowerThanZero(string name, int quality)
         {
             //Arrange
@@ -174,6 +175,36 @@ namespace GildedRoseTests
             //Assert
             Assert.Equal(0, Items[0].Quality);
         }
+
+        [Fact]
+        public void ConjuredItemShouldDegradeTwiceAsFast()
+        {
+            //Arrange
+            IList<Item> Items = new List<Item> { CreateAnItem(ItemNames.ConjuredManaCake, 8, 1) };
+            GildedRose sut = new GildedRose(Items);
+
+            //Act
+            sut.UpdateQuality();
+
+            //Assert
+            Assert.Equal(6, Items[0].Quality);
+        }
+
+
+        [Fact]
+        public void ConjuredItemShouldDegradeTwiceAsFastIfSellinPast()
+        {
+            //Arrange
+            IList<Item> Items = new List<Item> { CreateAnItem(ItemNames.ConjuredManaCake, 8, 0) };
+            GildedRose sut = new GildedRose(Items);
+
+            //Act
+            sut.UpdateQuality();
+
+            //Assert
+            Assert.Equal(4, Items[0].Quality);
+        }
+
 
         private Item CreateAnItem(string name, int quality, int sellin)
         {

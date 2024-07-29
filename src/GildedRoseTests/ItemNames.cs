@@ -10,4 +10,5 @@ public class ItemNames
     public const string ElixiroftheMongoose = "Elixir of the Mongoose";
     public const string Sulfuras = "Sulfuras, Hand of Ragnaros";
     public const string Backstagepasses = "Backstage passes to a TAFKAL80ETC concert";
+    public const string ConjuredManaCake = "Conjured Mana Cake";
 }
